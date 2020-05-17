@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addDisplays() {
-        mainViewModel.getResult().observe(this, integer -> {
-            if (integer != null) {
-                tvOutput.setText(integer.toString());
+        mainViewModel.getResult().observe(this, num -> {
+            if (num != null) {
+                tvOutput.setText(num.toString());
             } else {
                 tvOutput.setText("0");
             }

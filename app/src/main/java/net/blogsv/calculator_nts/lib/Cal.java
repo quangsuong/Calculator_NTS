@@ -21,13 +21,13 @@ public class Cal {
         return -1;
     }
 
-    public int evaluate(String expression) {
-        Stack<Integer> numbers = new Stack<>();
+    public double evaluate(String expression) {
+        Stack<Double> numbers = new Stack<>();
         Stack<Character> operations = new Stack<>();
         for (int i = 0; i < expression.length(); i++) {
             char c = expression.charAt(i);
             if (Character.isDigit(c)) {
-                int num = 0;
+                double num = 0.0;
                 while (Character.isDigit(c)) {
                     num = num * 10 + (c - '0');
                     i++;
@@ -42,13 +42,13 @@ public class Cal {
                 operations.push(c);
             } else if (c == ')') {
                 while (operations.peek() != '(') {
-                    int output = performOperation(numbers, operations);
+                    double output = performOperation(numbers, operations);
                     numbers.push(output);
                 }
                 operations.pop();
             } else if (isOperator(c)) {
                 while (!operations.isEmpty() && precedence(c) <= precedence(operations.peek())) {
-                    int output = performOperation(numbers, operations);
+                    double output = performOperation(numbers, operations);
                     numbers.push(output);
                 }
                 operations.push(c);
@@ -56,7 +56,7 @@ public class Cal {
         }
 
         while (!operations.isEmpty()) {
-            int output = performOperation(numbers, operations);
+            double output = performOperation(numbers, operations);
             numbers.push(output);
         }
 
@@ -64,9 +64,9 @@ public class Cal {
 
     }
 
-    private int performOperation(Stack<Integer> numbers, Stack<Character> operations) {
-        int a = numbers.pop();
-        int b = numbers.pop();
+    private double performOperation(Stack<Double> numbers, Stack<Character> operations) {
+        double a = numbers.pop();
+        double b = numbers.pop();
         char operation = operations.pop();
         switch (operation) {
             case '+':

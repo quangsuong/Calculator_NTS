@@ -1,6 +1,7 @@
 package net.blogsv.calculator_nts.viewmodel;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -14,25 +15,26 @@ import net.blogsv.calculator_nts.lib.Cal;
  */
 public class MainViewModel extends AndroidViewModel {
     Cal cal;
-    MutableLiveData<Integer> result;
+    MutableLiveData<Double> result;
 
     public MainViewModel(@NonNull Application application) {
         super(application);
         cal = new Cal();
         result = new MutableLiveData<>();
 
+
     }
 
 
-    public MutableLiveData<Integer> getResult() {
+    public MutableLiveData<Double> getResult() {
         return result;
     }
 
     public void calMath(String str) {
         if (!str.isEmpty()) {
-            result.postValue(cal.evaluate(str));
+            result.postValue(Math.ceil(cal.evaluate(str)*1000000)/1000000);
         } else {
-            result.postValue(0);
+            result.postValue(0.0);
         }
     }
 }
