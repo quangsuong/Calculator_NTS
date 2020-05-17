@@ -32,12 +32,21 @@ public class MainActivity extends AppCompatActivity {
     private void addDisplays() {
         mainViewModel.getResult().observe(this, num -> {
             if (num != null) {
-                tvOutput.setText(num.toString());
-            } else {
-                tvOutput.setText("0");
+               format(num);
             }
         });
 
+    }
+
+    private void format(Double num) {
+        String str = num.toString();
+        char c = str.charAt(str.length() - 1);
+        if (c == '0') {
+            int n = (int) Math.round(num);
+            tvOutput.setText(String.valueOf(n));
+        }else {
+            tvOutput.setText(num.toString());
+        }
     }
 
     private void addEvents() {

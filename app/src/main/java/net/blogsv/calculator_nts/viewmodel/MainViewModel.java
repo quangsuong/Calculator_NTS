@@ -31,8 +31,6 @@ public class MainViewModel extends AndroidViewModel {
     public void calMath(String str) {
         if (!str.isEmpty()) {
             result.postValue(Math.ceil(cal.evaluate(str)*1000000)/1000000);
-        } else {
-            result.postValue(0.0);
         }
     }
 }
