@@ -15,8 +15,6 @@ public class Cal {
             case '*':
             case '/':
                 return 2;
-            case '^':
-                return 3;
         }
         return -1;
     }
@@ -78,14 +76,14 @@ public class Cal {
             case '/':
                 if (a == 0)
                     throw new
-                            UnsupportedOperationException("Cannot divide by zero");
+                            UnsupportedOperationException("Không thể chia cho số không");
                 return b / a;
         }
         return 0;
     }
 
     private boolean isOperator(char c) {
-        return (c == '+' || c == '-' || c == '/' || c == '*' || c == '^');
+        return (c == '+' || c == '-' || c == '/' || c == '*');
     }
 
 }
