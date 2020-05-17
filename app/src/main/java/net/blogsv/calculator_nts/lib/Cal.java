@@ -59,7 +59,9 @@ public class Cal {
             int output = performOperation(numbers, operations);
             numbers.push(output);
         }
+
         return numbers.pop();
+
     }
 
     private int performOperation(Stack<Integer> numbers, Stack<Character> operations) {

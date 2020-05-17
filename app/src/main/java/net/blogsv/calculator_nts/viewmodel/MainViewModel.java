@@ -20,7 +20,9 @@ public class MainViewModel extends AndroidViewModel {
         super(application);
         cal = new Cal();
         result = new MutableLiveData<>();
+
     }
+
 
     public MutableLiveData<Integer> getResult() {
         return result;
